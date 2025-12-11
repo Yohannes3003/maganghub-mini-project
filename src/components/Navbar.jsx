@@ -21,7 +21,7 @@ export default function Navbar() {
       <h2
         style={{
           margin: 0,
-          color: '#4f46e5',
+          color: '#09090aff',
           fontWeight: 700,
         }}
       >

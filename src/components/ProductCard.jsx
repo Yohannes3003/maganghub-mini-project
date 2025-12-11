@@ -24,7 +24,7 @@ export default function ProductCard({ product, onOpen }) {
       cover={
         <div
           style={{
-            height: 220,
+            height: 180, // lebih kecil supaya mobile tetap pas
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -42,37 +42,39 @@ export default function ProductCard({ product, onOpen }) {
         </div>
       }
     >
-      {/* TITLE (fixed height) */}
+      {/* TITLE — Responsive, max 2 lines (tidak dipotong kasar) */}
       <Title
         level={5}
         style={{
-          marginBottom: 6,
-          minHeight: 45, // FIXED height → semua title konsisten
-          display: 'flex',
-          alignItems: 'center',
+          marginBottom: 8,
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+          height: 48, // FIXED HEIGHT
         }}
       >
         {product.title}
       </Title>
 
-      {/* DESCRIPTION (fixed height) */}
+      {/* DESCRIPTION — Tetap 2 baris */}
       <Paragraph
         ellipsis={{ rows: 2 }}
         style={{
           marginBottom: 10,
-          minHeight: 44, // FIXED height → semua deskripsi konsisten
+          height: 40, // FIXED HEIGHT
         }}
       >
         {product.description}
       </Paragraph>
 
-      {/* PRICE (selalu sejajar) */}
+      {/* PRICE — Tetap sejajar */}
       <Title
         level={5}
         style={{
           color: '#7e3af2',
           marginBottom: 14,
-          minHeight: 28, // FIXED height → harga sejajar
+          height: 26, // FIXED HEIGHT juga lebih aman
           display: 'flex',
           alignItems: 'center',
         }}
@@ -80,10 +82,9 @@ export default function ProductCard({ product, onOpen }) {
         ${product.price}
       </Title>
 
-      {/* Spacer untuk mendorong button ke bawah */}
+      {/* Spacer agar button tetap di bawah */}
       <div style={{ flexGrow: 1 }}></div>
 
-      {/* BUTTON */}
       <Button
         type="primary"
         block

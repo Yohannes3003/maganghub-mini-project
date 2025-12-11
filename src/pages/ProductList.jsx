@@ -47,21 +47,28 @@ export default function ProductList() {
   return (
     <Row gutter={24}>
       {/* ==================== FILTER KIRI ==================== */}
-      <Col xs={24} md={6}>
+      <Col
+        xs={24}
+        md={6}
+        style={{
+          marginBottom: 20, // spacing di mobile agar tidak nempel
+        }}
+      >
         <Card
           style={{
             padding: 20,
             borderRadius: 16,
             boxShadow: '0 4px 14px rgba(0,0,0,0.08)',
-            position: 'sticky',
-            top: 90, // sesuaikan dengan tinggi navbar
-            zIndex: 10,
             background: 'white',
+
+            // Desktop sticky, mobile non-sticky
+            position: window.innerWidth >= 768 ? 'sticky' : 'static',
+            top: window.innerWidth >= 768 ? 90 : 'auto',
+            zIndex: 10,
           }}
         >
           <h3 style={{ marginBottom: 20, fontWeight: 600 }}>Filter</h3>
 
-          {/* Kategori */}
           <div style={{ marginBottom: 16 }}>
             <Select value={category} onChange={setCategory} style={{ width: '100%' }} size="large">
               {categories.map((c) => (
@@ -72,7 +79,6 @@ export default function ProductList() {
             </Select>
           </div>
 
-          {/* Sorting */}
           <div style={{ marginBottom: 16 }}>
             <Select value={sort} onChange={setSort} style={{ width: '100%' }} size="large">
               <Option value="default">Default</Option>
@@ -83,7 +89,6 @@ export default function ProductList() {
             </Select>
           </div>
 
-          {/* Search */}
           <Search placeholder="Cari produk..." allowClear enterButton size="large" value={query} onChange={(e) => setQuery(e.target.value)} onSearch={(v) => setQuery(v)} />
         </Card>
       </Col>
