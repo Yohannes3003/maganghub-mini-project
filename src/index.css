@@ -1,0 +1,24 @@
+:root {
+  --bg: #f5f7fb;
+  --text: #111827;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui;
+  background: var(--bg);
+  color: var(--text);
+  background: #f5f7fb !important;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f3f4f6;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
