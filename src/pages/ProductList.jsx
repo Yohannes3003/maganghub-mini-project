@@ -46,7 +46,6 @@ export default function ProductList() {
 
   return (
     <Row gutter={24}>
-      {/* ==================== FILTER KIRI ==================== */}
       <Col
         xs={24}
         md={6}
@@ -61,7 +60,6 @@ export default function ProductList() {
             boxShadow: '0 4px 14px rgba(0,0,0,0.08)',
             background: 'white',
 
-            // Desktop sticky, mobile non-sticky
             position: window.innerWidth >= 768 ? 'sticky' : 'static',
             top: window.innerWidth >= 768 ? 90 : 'auto',
             zIndex: 10,
@@ -93,7 +91,6 @@ export default function ProductList() {
         </Card>
       </Col>
 
-      {/* ==================== PRODUK KANAN ==================== */}
       <Col xs={24} md={18}>
         {paginated.length === 0 ? (
           <Empty description="Tidak ada produk ditemukan" />
@@ -107,7 +104,6 @@ export default function ProductList() {
           </Row>
         )}
 
-        {/* Pagination */}
         <div
           style={{
             marginTop: 24,
@@ -119,7 +115,6 @@ export default function ProductList() {
         </div>
       </Col>
 
-      {/* Modal Detail */}
       <ProductModal open={open} onClose={() => setOpen(false)} product={selected} />
     </Row>
   );

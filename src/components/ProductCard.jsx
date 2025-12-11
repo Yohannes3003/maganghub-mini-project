@@ -24,7 +24,7 @@ export default function ProductCard({ product, onOpen }) {
       cover={
         <div
           style={{
-            height: 180, // lebih kecil supaya mobile tetap pas
+            height: 180,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -42,7 +42,6 @@ export default function ProductCard({ product, onOpen }) {
         </div>
       }
     >
-      {/* TITLE — Responsive, max 2 lines (tidak dipotong kasar) */}
       <Title
         level={5}
         style={{
@@ -51,30 +50,28 @@ export default function ProductCard({ product, onOpen }) {
           WebkitLineClamp: 2,
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden',
-          height: 48, // FIXED HEIGHT
+          height: 48,
         }}
       >
         {product.title}
       </Title>
 
-      {/* DESCRIPTION — Tetap 2 baris */}
       <Paragraph
         ellipsis={{ rows: 2 }}
         style={{
           marginBottom: 10,
-          height: 40, // FIXED HEIGHT
+          height: 40,
         }}
       >
         {product.description}
       </Paragraph>
 
-      {/* PRICE — Tetap sejajar */}
       <Title
         level={5}
         style={{
           color: '#7e3af2',
           marginBottom: 14,
-          height: 26, // FIXED HEIGHT juga lebih aman
+          height: 26,
           display: 'flex',
           alignItems: 'center',
         }}
@@ -82,7 +79,6 @@ export default function ProductCard({ product, onOpen }) {
         ${product.price}
       </Title>
 
-      {/* Spacer agar button tetap di bawah */}
       <div style={{ flexGrow: 1 }}></div>
 
       <Button

@@ -6,7 +6,6 @@ const { Title, Paragraph, Text } = Typography;
 export default function ProductModal({ open, onClose, product }) {
   if (!product) return null;
 
-  // Format kategori
   const formatCategory = (str) => {
     if (!str) return '';
     return str.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());

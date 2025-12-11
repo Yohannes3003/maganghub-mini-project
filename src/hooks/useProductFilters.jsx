@@ -7,28 +7,23 @@ export default function useProductFilters(products) {
   const [page, setPage] = useState(1);
   const pageSize = 8;
 
-  // Format helper
   const formatCategory = (str) => {
     if (!str) return '';
     return str.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
   };
 
-  // Extract categories
   const categories = useMemo(() => {
     const set = new Set(products.map((p) => p.category));
     return ['all', ...set];
   }, [products]);
 
-  // Filter logic
   const filtered = useMemo(() => {
     let list = [...products];
 
-    // Filter berdasarkan kategori
     if (category !== 'all') {
       list = list.filter((p) => p.category === category);
     }
 
-    // Search bar (title, desc, brand)
     const q = query.toLowerCase();
     if (q.trim()) {
       list = list.filter((p) => {
@@ -39,7 +34,6 @@ export default function useProductFilters(products) {
       });
     }
 
-    // Sorting
     if (sort === 'price-asc') list.sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list.sort((a, b) => b.price - a.price);
 
@@ -50,12 +44,10 @@ export default function useProductFilters(products) {
     return list;
   }, [products, category, sort, query]);
 
-  // Pagination
   const total = filtered.length;
   const start = (page - 1) * pageSize;
   const paginated = filtered.slice(start, start + pageSize);
 
-  // Reset ke halaman 1 saat filter berubah
   useEffect(() => {
     setPage(1);
   }, [category, sort, query]);

@@ -25,7 +25,7 @@ export default function Navbar() {
           fontWeight: 700,
         }}
       >
-        MagangHub – Mini Project
+        MagangHub Mini Project
       </h2>
     </Header>
   );
